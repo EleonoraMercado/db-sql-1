@@ -1,0 +1,74 @@
+use db-university;
+
+#1 Selezionare tutti gli insegnanti.
+
+SELECT *
+FROM teachers t; 
+
+#2 Selezionare tutti i capi di ogni dipartimento.
+
+SELECT head_of_department 
+FROM departments d;
+
+#3 Seleziona tutti i corsi di laurea magistrale.
+
+SELECT *
+FROM degrees d 
+WHERE `level` = 'Magistrale';
+
+#4 Selezionare tutti gli studenti che hanno come nome Marco.
+
+SELECT *
+FROM students s 
+WHERE name LIKE 'Marco';
+
+#5 Selezionare tutti i corsi(insegnamenti) che valgono più o uguale a 12 crediti.
+
+SELECT *
+FROM courses c 
+WHERE cfu >= 12;
+
+#6 Selezionare tutti i corsi(insegnamenti) che valgono più di 10 crediti oppure meno di 5.
+
+SELECT *
+FROM courses c 
+WHERE cfu > 10
+OR cfu < 5
+ORDER BY cfu DESC;
+
+#7 Selezionare tutti i corsi(insegnamenti) del primo semestre del primo anno di un qualsiasi corso di laurea.
+
+SELECT c.id, c.name 
+FROM courses c 
+WHERE period LIKE 'I semestre' 
+AND `year` = 1;
+
+#8 Selezionare tutti i corsi(insegnamenti) che non hanno un sito web.
+
+SELECT *
+FROM courses c 
+WHERE website IS NULL;
+
+#9 Selezionare tutti gli insegnanti che hanno un numero di telefono.
+
+SELECT *
+FROM teachers t 
+WHERE phone IS TRUE ;
+
+#10 Selezionare tutti gli studenti il cui nome inizia per "E".
+
+SELECT *
+FROM students s 
+WHERE name LIKE 'E%';
+
+#11 Contare tutti gli insegnanti che iniziano con “E” (suggerimento: guardate l’operatore COUNT).
+
+SELECT *
+FROM teachers t 
+WHERE name LIKE 'E%';
+
+#12  Contare tutti gli insegnanti che non hanno un numero di telefono.
+
+SELECT *
+FROM teachers t 
+WHERE phone IS NULL;
