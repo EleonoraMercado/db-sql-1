@@ -1,0 +1,28 @@
+use db-university;
+
+#1 Contare quanti iscritti ci sono stati ogni anno.
+
+SELECT YEAR(s.enrolment_date), COUNT(*)
+FROM students s 
+GROUP BY YEAR (s.enrolment_date)
+ORDER BY YEAR (s.enrolment_date);
+
+#2 Contare gli insegnanti che hanno l'ufficio nello stesso edificio.
+
+SELECT t.office_address, COUNT(*)
+FROM teachers t 
+GROUP BY t.office_address;
+
+#3 Calcolare la media dei voti di ogni appello d'esame.
+
+SELECT es.exam_id , AVG(es.vote)
+FROM exam_student es 
+GROUP BY es.exam_id;
+
+#4 Contare quanti corsi di laurea ci sono per ogni dipartimento.
+
+SELECT d.department_id, COUNT(*)
+FROM courses c 
+JOIN degrees d ON c.degree_id = d.id 
+GROUP BY d.department_id ;
+
